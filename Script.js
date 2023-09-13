@@ -13,6 +13,8 @@ function encriptar(){
     resultado.textContent = encriptarTexto(cajatexto);
 }
 
+// https://github.com/LionalEstevez/lionalestevez.github.io.git
+
 function desencriptar(){
     ocultarAdelante();
     var cajatexto = recuperarTexto()
