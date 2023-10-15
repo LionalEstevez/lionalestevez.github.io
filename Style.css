@@ -211,3 +211,12 @@ main{
 .ocultar{
     display: none;
 }
+
+footer {
+    position: fixed; /* Cambiado a fixed para asegurar que siempre esté abajo */
+    bottom: 0;
+    width: 100%;
+    background-color: #f4f4fc; /* Puedes cambiar el color de fondo según tu diseño */
+    text-align: center; /* Centra el texto dentro del pie de página */
+    padding: 10px; /* Añade un poco de espacio alrededor del texto */
+}
