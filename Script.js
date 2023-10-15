@@ -15,11 +15,30 @@ function encriptar(){
 
 // https://github.com/LionalEstevez/lionalestevez.github.io.git
 
-function desencriptar(){
+function desencriptar() {
     ocultarAdelante();
-    var cajatexto = recuperarTexto()
+    var cajatexto = recuperarTexto();
     resultado.textContent = desencriptarTexto(cajatexto);
+
+    // Mostrar el mensaje de confirmación
+    var confirmar = confirm("¿Quieres limpiar la caja de texto?");
+    if (confirmar) {
+        limpiarCajaTexto();
+    } else {
+        setTimeout(function() {
+            var confirmarNuevamente = confirm("¿Quieres limpiar la caja de texto?");
+            if (confirmarNuevamente) {
+                limpiarCajaTexto();
+            }
+        }, 10000); // Esperar 10 segundos antes de preguntar nuevamente
+    }
 }
+
+function limpiarCajaTexto() {
+    var cajatexto = document.querySelector(".cajatexto");
+    cajatexto.value = "";
+}
+
 
 function recuperarTexto(){
     var cajatexto = document.querySelector(".cajatexto")
@@ -103,9 +122,16 @@ function desencriptarTexto(mensaje){
 
 }
 
-const btnCopiar = document.querySelector(".btn-copiar"); 
-    btnCopiar.addEventListener("click", copiar = () => {
-    var contenido = document.querySelector(".texto-resultado").textContent;
-    navigator.clipboard.writeText(contenido);
-    console.log("hola"); 
+const btnCopiar = document.querySelector(".btn-copiar");
+
+btnCopiar.addEventListener("click", () => {
+    const contenido = document.querySelector(".texto-resultado").textContent;
+    const textarea = document.createElement("textarea");
+    textarea.value = contenido;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+
+    alert("Texto copiado");
 });
