@@ -9,17 +9,27 @@ botonDesencriptar.onclick = desencriptar;
 
 function encriptar(){
     ocultarAdelante();
-    var cajatexto = recuperarTexto()
-    resultado.textContent = encriptarTexto(cajatexto);
+    var cajatexto = recuperarTexto();
+
+    if (cajatexto.trim() !== "") { 
+        resultado.textContent = encriptarTexto(cajatexto);
+    } else {
+        alert("No hay texto para encriptar.");
+    }
 }
 
 // https://github.com/LionalEstevez/lionalestevez.github.io.git
 
-function desencriptar() {
+function desencriptar(){
     ocultarAdelante();
     var cajatexto = recuperarTexto();
-    resultado.textContent = desencriptarTexto(cajatexto);
 
+    if (cajatexto.trim() !== "") { // Verifica si hay texto para desencriptar
+        resultado.textContent = desencriptarTexto(cajatexto);
+    } else {
+        alert("No hay texto para desencriptar. Copie el texto encriptado y péguelo en el área 'Ingrese el texto aquí'.");
+    }
+}
     // Mostrar el mensaje de confirmación
     var confirmar = confirm("¿Quieres limpiar la caja de texto?");
     if (confirmar) {
@@ -32,7 +42,6 @@ function desencriptar() {
             }
         }, 10000); // Esperar 10 segundos antes de preguntar nuevamente
     }
-}
 
 function limpiarCajaTexto() {
     var cajatexto = document.querySelector(".cajatexto");
